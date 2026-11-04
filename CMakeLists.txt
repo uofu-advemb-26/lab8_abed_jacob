@@ -14,6 +14,17 @@ else()
     set(PICO_SDK_PATH lib/pico-sdk)
 endif()
 
+# CAN submodule
+if (DEFINED CAN_PATH)
+# Already defined, e.g. -D flag
+elseif (DEFINED ENV{CAN_PATH})
+# Defined in an environment variable
+    set(CANLIB_PATH $ENV{CAN_PATH})
+else()
+# Use the submodule
+    set(CAN_PATH lib/can2040)
+endif()
+
 if (DEFINED FREERTOS_PATH)
 # Already defined, e.g. -D flag
 elseif(DEFINED ENV{FREERTOS_PATH})
@@ -55,6 +66,9 @@ include(${FREERTOS_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.c
 
 # This sets up the unity library. They don't provide a library export, so it's defined locally.
 include(unity.cmake)
+
+# include CAN for realsies
+include(${CAN_PATH}/can2040.cmake)
 
 # This defines your project name, you can name it anything you want.
 project(myproject C CXX ASM)

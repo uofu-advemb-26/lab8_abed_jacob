@@ -20,3 +20,6 @@
 [submodule "lib/unity"]
 	path = lib/unity
 	url = git@github.com:ThrowTheSwitch/Unity.git
+[submodule "lib/can2040"]
+	path = lib/can2040
+	url = git@github.com:uofu-embed/can2040.git

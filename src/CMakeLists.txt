@@ -16,6 +16,7 @@ target_link_libraries(hello_freertos PRIVATE
   pico_stdlib
   pico_multicore
   pico_async_context_freertos
+  can2040
   FreeRTOS-Kernel-Heap4
 )
 
